@@ -4,8 +4,8 @@ import cv2
 import time
 
 # globals
-outputDir    = 'frames'
-frameDelay   = 42       # the answer to everything
+outputDir = 'frames'
+frameDelay = 42  # the answer to everything
 
 # initialize frame count
 count = 0
@@ -17,15 +17,14 @@ frameFileName = f'{outputDir}/grayscale_{count:04d}.bmp'
 frame = cv2.imread(frameFileName)
 
 while frame is not None:
-    
     print(f'Displaying frame {count}')
     # Display the frame in a window called "Video"
     cv2.imshow('Video', frame)
 
     # Wait for 42 ms and check if the user wants to quit
-    if cv2.waitKey(frameDelay) and 0xFF == ord("q"):
-        break    
-    
+    if cv2.waitKey(frameDelay) & 0xFF == ord("q"):
+        break
+
     # get the next frame filename
     count += 1
     frameFileName = f'{outputDir}/grayscale_{count:04d}.bmp'
